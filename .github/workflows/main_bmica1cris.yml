@@ -41,7 +41,7 @@ jobs:
     runs-on: windows-latest
     needs: build
     environment:
-      name: 'Production'
+      name: 'QA'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
@@ -55,7 +55,7 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'BMICA1CRIS'
-          slot-name: 'Production'
+          slot-name: 'QA'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E3D0E3B7CAEA44119970015346EBB90D }}
           package:
           
