@@ -1,17 +1,16 @@
 ﻿@page
 @model BPCalculator.Pages.BMICalculatorModel
-@{
-}
+@{ ViewData["Title"] = "BMI Category Calculator"; }
 <h2>@Model.ResultInfo</h2>
 <form method="post">
     <div asp-validation-summary="All"></div>
     <div>
         <label asp-for="BMICal.kg"></label>
-        <input asp-for="BMICal.kg" id="BMI_WEIGHT"/> kg
+        <input asp-for="BMICal.kg" id="BMI_WEIGHT" /> kg
     </div>
     <div>
         <label asp-for="BMICal.m"></label>
-        <input asp-for="BMICal.m" id="BMI_HEIGHT"/> Cm
+        <input asp-for="BMICal.m" id="BMI_HEIGHT" /> Cm
     </div>
     <br />
     <button>Calculate</button>
