@@ -57,4 +57,22 @@ jobs:
           app-name: 'BMICA1CRIS'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E3D0E3B7CAEA44119970015346EBB90D }}
-          package: .
+          package:
+          
+  k6_load_test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Pull Docker image for k6
+      run: docker pull loadimpact/k6
+
+    - name: Run k6 load test, capture report
+      run: docker run -i loadimpact/k6 run - <K6CA1Testing/performtest.js > k6report.txt
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: k6report
+        path: k6report.txt          .
