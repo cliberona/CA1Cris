@@ -28,6 +28,9 @@ jobs:
         
       - name: Run unit tests
         run: dotnet test unitTestingCA1/unitTestingCA1.csproj --collect "Unit Test" 
+        
+      - name: Run BDD tests
+        run: dotnet test BDDTestingCA1/BDDTestingCA1.csproj --collect "BDD Test"
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
