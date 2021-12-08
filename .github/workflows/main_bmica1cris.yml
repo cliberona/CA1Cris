@@ -128,8 +128,7 @@ jobs:
   k6_load_test:
 
     runs-on: ubuntu-latest
-    needs: deploy
-
+    needs: deploy_qa
     steps:
     - uses: actions/checkout@v2
 
@@ -147,7 +146,7 @@ jobs:
   zap_scan:
 
     runs-on: ubuntu-latest
-    needs: deploy
+    needs: deploy_qa
 
     steps:
 
@@ -203,4 +202,5 @@ jobs:
           app-name: 'BMICA1CRIS'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E3D0E3B7CAEA44119970015346EBB90D }}
-          package:
+          package: .
+          
