@@ -79,7 +79,7 @@ jobs:
         name: k6report
         path: k6report.txt
         
-   zap_scan:
+  zap_scan:
 
     runs-on: ubuntu-latest
 
