@@ -38,6 +38,29 @@ jobs:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
           
+  dependency_check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Depcheck
+        uses: dependency-check/Dependency-Check_Action@main
+        id: Depcheck
+        with:
+          project: 'BPCalculator'
+          path: '.'
+          format: 'HTML'    
+          args: >
+            --failOnCVSS 7            
+          # fail if CVSS score (CVE scoring system) is High >=7
+          
+      - name: Upload Test results
+        uses: actions/upload-artifact@master
+        with:
+           name: Depcheck report
+           path: ${{github.workspace}}/reports
+          
   scan_code:
     runs-on: windows-latest
     steps:
@@ -79,7 +102,7 @@ jobs:
 
   deploy:
     runs-on: windows-latest
-    needs: [build, scan_code]
+    needs: [build, scan_code, dependency_check]
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
