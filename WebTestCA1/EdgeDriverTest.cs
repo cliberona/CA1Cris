@@ -36,11 +36,12 @@ namespace WebTestCA1
         [TestMethod]
         public void VerifyBPCalculator()
         {
+            _driver.Url = "https://bmica1cris.azurewebsites.net/";
 
             IWebElement diastolicPressure = _driver.FindElement(By.Id("press_diastolic"));
             // enter 60 in element
             diastolicPressure.SendKeys("60");
-            IWebElement systolicPressure = _driver.FindElement(By.Id("press_diastolic"));
+            IWebElement systolicPressure = _driver.FindElement(By.Id("press_systolic"));
             // enter 100 in element
             systolicPressure.SendKeys("100");
 
