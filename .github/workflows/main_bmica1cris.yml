@@ -3,7 +3,7 @@
 
 name: CICD for CA1 Cristian Liberona
 env:
-  URI: https://bmica1cris.azurewebsites.net      
+  URI: https://bmica1cris-qa.azurewebsites.net/   
 on:
   push:
     branches:
@@ -118,7 +118,7 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'BMICA1CRIS'
-          slot-name: 'QA'
+          slot-name: 'bmica1cris-QA'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E3D0E3B7CAEA44119970015346EBB90D }}
           package: .
           
@@ -162,7 +162,7 @@ jobs:
         
   selenium_test:
     runs-on: windows-latest
-    needs: deploy
+    needs: k6_load_test
     steps:
       - uses: actions/checkout@v2
 
