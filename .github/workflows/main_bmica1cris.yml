@@ -160,7 +160,7 @@ jobs:
         name: ZAPreport
         path: /report/zapreport.html
         
-  build:
+  selenium_test:
     runs-on: windows-latest
 
     steps:
