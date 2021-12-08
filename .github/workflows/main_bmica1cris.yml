@@ -103,7 +103,7 @@ jobs:
           dotnet build
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
 
-  deploy:
+  deploy_qa:
     runs-on: windows-latest
     needs: [build, scan_code, dependency_check]
     environment:
@@ -182,3 +182,25 @@ jobs:
         with:
           name: Selenium Tests Results
           path: TestResults/selenium.trx
+          
+  deploy_staging:
+    runs-on: windows-latest
+    needs: selenium_test
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v2
+        with:
+          name: .net-app
+
+      - name: Deploy to Azure Web App
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'BMICA1CRIS'
+          slot-name: 'Production'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E3D0E3B7CAEA44119970015346EBB90D }}
+          package:
