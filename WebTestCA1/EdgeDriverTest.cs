@@ -23,7 +23,7 @@ namespace WebTestCA1
             {
                 PageLoadStrategy = PageLoadStrategy.Normal
             };
-            _driver = new EdgeDriver("C:\\Code\\CA1Cris\\WebTestCA1\\Drivers");
+            _driver = new EdgeDriver(".\\Drivers");
         }
 
         [TestMethod]
