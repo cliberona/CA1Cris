@@ -1,0 +1,54 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptionId": {
+            "value": "5be3f0bf-d1a4-49b3-b814-3ef2e7e02702"
+        },
+        "name": {
+            "value": "BMICA1CRIS"
+        },
+        "location": {
+            "value": "West Europe"
+        },
+        "hostingPlanName": {
+            "value": "ASP-TestCA1-8742"
+        },
+        "serverFarmResourceGroup": {
+            "value": "TestCA1"
+        },
+        "alwaysOn": {
+            "value": false
+        },
+        "sku": {
+            "value": "Free"
+        },
+        "skuCode": {
+            "value": "F1"
+        },
+        "workerSize": {
+            "value": "0"
+        },
+        "workerSizeId": {
+            "value": "0"
+        },
+        "numberOfWorkers": {
+            "value": "1"
+        },
+        "currentStack": {
+            "value": "dotnetcore"
+        },
+        "phpVersion": {
+            "value": "OFF"
+        },
+        "errorLink": {
+            "value": "https://BMICA1CRIS.scm.azurewebsites.net/detectors?type=tools&name=eventviewer"
+        },
+        "repoUrl": {
+            "value": "https://github.com/cliberona/CA1Cris"
+        },
+        "branch": {
+            "value": "main"
+        }
+    }
+}

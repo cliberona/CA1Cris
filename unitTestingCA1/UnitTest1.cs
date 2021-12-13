@@ -12,6 +12,12 @@ namespace unitTestingCA1
             BloodPressure BP = new BloodPressure() { Systolic = 100, Diastolic = 60 };
             Assert.Equal(BPCategory.Ideal, BP.Category);
         }
+        [Fact]
+        public void TestBMI()
+        {
+            BMICalculator BMI = new BMICalculator() { kg = 100, m = 160 };
+            Assert.Equal("-> Overweight", BMI.bmiCalculate());
+        }
 
     }
 }
